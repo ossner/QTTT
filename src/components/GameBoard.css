@@ -1,0 +1,33 @@
+.cell {
+  width: 60px;         /* Width of each cell */
+  height: 60px;        /* Height of each cell */
+  border: 1px solid #000; /* Border for each cell */
+  margin: 5px;         /* Margin around cells */
+  display: flex;       /* Flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  font-size: 24px;     /* Font size of X and O */
+  cursor: pointer;     /* Pointer cursor on hover */
+  background-color: #f0f0f0; /* Light gray background */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.cell:hover {
+  background-color: #e0e0e0; /* Slightly darker background on hover */
+}
+
+.game-board {
+  display: grid;               /* Use grid layout for the board */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+  grid-gap: 5px;               /* Gap between cells */
+  max-width: 200px;            /* Maximum width of the board */
+  margin: auto;                /* Center the board horizontally */
+}
+
+.board-row {
+  display: contents; /* Use contents to not interfere with grid layout */
+}
+
+body, html {
+  font-family: 'Geneva', sans-serif;
+}
