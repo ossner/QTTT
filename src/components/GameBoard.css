@@ -1,19 +1,19 @@
 .cell {
-  width: 60px;         /* Width of each cell */
-  height: 60px;        /* Height of each cell */
+  width: 120px;         /* Width of each cell */
+  height: 120px;        /* Height of each cell */
   border: 1px solid #000; /* Border for each cell */
   margin: 5px;         /* Margin around cells */
   display: flex;       /* Flexbox to center content */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  font-size: 24px;     /* Font size of X and O */
+  font-size: 20px;     /* Font size of X and O */
   cursor: pointer;     /* Pointer cursor on hover */
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #ffffff; /* Light gray background */
   transition: background-color 0.3s; /* Smooth background color transition */
 }
 
 .cell:hover {
-  background-color: #e0e0e0; /* Slightly darker background on hover */
+  background-color: #f0f0f0; /* Slightly darker background on hover */
 }
 
 .game-board {
@@ -30,4 +30,26 @@
 
 body, html {
   font-family: 'Geneva', sans-serif;
+}
+
+.glow {
+    animation: flickerGlow 0.25s infinite alternate;
+}
+
+.collapsable {
+    animation: flickerGlow2 5s infinite alternate;
+}
+@keyframes flickerGlow {
+    0% { box-shadow: 0 0 15px rgba(3, 111, 234, 0.8); }
+    25% { box-shadow: 0 0 15px rgba(241, 4, 238, 0.8); }
+    50% { box-shadow: 0 0 15px rgba(3, 111, 234, 0.8); }
+    75% { box-shadow: 0 0 15px rgba(241, 4, 238, 0.8); }
+    100% { box-shadow: 0 0 15px rgba(3, 111, 234, 0.8); }
+}
+@keyframes flickerGlow2 {
+    0% { box-shadow: 0 0 15px rgba(3, 234, 69, 0.8); }
+    25% { box-shadow: 0 0 15px rgba(241, 4, 4, 0.8); }
+    50% { box-shadow: 0 0 15px rgba(3, 234, 69, 0.8); }
+    75% { box-shadow: 0 0 15px rgba(241, 4, 4, 0.8); }
+    100% { box-shadow: 0 0 15px rgba(3, 234, 69, 0.8); }
 }
