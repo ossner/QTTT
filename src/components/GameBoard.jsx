@@ -50,6 +50,21 @@ const GameBoard = () => {
 
     // Function to handle cell clicks
     const handleCellClick = (rowIndex, colIndex) => {
+        if (!Array.isArray(board[rowIndex][colIndex])) {
+            // If the cell is not an array of moves, but rather a single move, it was already observed and is final
+            toast.error('This cell is observed and therefore final!', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: 0,
+                theme: "colored",
+                transition: Bounce,
+            });
+            return
+        }
         if (!collapsable) {
             if (moves.some(move => move.rowIndex === rowIndex && move.colIndex === colIndex)) {
                 const newMoves = moves.filter(move => move.rowIndex !== rowIndex || move.colIndex !== colIndex);
@@ -88,7 +103,7 @@ const GameBoard = () => {
                     transition: Bounce,
                 });
             } else {
-                // Handle Collapse
+                collapse()
 
                 setCollapsable(false)
                 setMoves([])
@@ -120,9 +135,12 @@ const GameBoard = () => {
 
     const submitMoves = () => {
         if (!collapsable) {
+            // If the board is not collapsable yet, simply add the moves made
             const newBoard = board.map(row => row.slice()); // Create a copy of the board
             for (var i = 0; i < moves.length; i++) {
-                newBoard[moves[i].rowIndex][moves[i].colIndex].push({ player: moves[i].moveNumber % 2 === 1 ? 'X' : 'O', moveNumber: moves[i].moveNumber }); // Add the move to the clicked cell
+                newBoard[moves[i].rowIndex][moves[i].colIndex].push(
+                    { player: moves[i].moveNumber % 2 === 1 ? 'X' : 'O', moveNumber: moves[i].moveNumber}
+                ); // Add the move to the selected cells
             }
             const newGraph = addEdge(gameGraph, moves[0].rowIndex * 3 + moves[0].colIndex, moves[1].rowIndex * 3 + moves[1].colIndex)
 
